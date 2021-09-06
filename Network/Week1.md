@@ -1,5 +1,9 @@
-# 컴퓨터 네트워크에 대한 개념
+# Conception of Computer Network
+* 네트워크는 **노드**와 **링크**로 구성되어 있는 것
+* 그래프의 정의와 비슷하다고 생각하면 된다. 여러개의 vertex와 edge로 연결 되어있는 상태
+* 네트워크에서는 vertex 대신 node라는 개념을 쓰고, edge 대신 link 라는 개념을 쓴다
 * 컴퓨터는 cpu, 메모리를 가지고 있고 디지털 정보를 처리하기 때문에 컴퓨터 네트워크는 결국 디지털 네트워크를 의미한다
+* Packet Switching 의 주요 개념은 Store and forward (저장하고 보내기)
 
 ## 1. What is internet?
 * Internet is a set of networking using **IP Protocol(some standard rules)**
