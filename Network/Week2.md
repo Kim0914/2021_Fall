@@ -26,9 +26,32 @@
   * Link control to support reliable communications between node and other nodes on the same link
   * error control, flow control, congestion control
   * We need 3 controls !! to support reliable communications
+
+
 * MAC (Media Access Control)
   * ALOHA, Slotted ALOHA, CSMA/CD, CSMA/CA ...
 
 * Why do we need MAC Address ?
   * => just use IP Address 
   * MAC Address guarantee the unique MAC Address
+
+* Why do we need a router in the network?
+ * 라우터는 서로 다른 네트워크 사이에서의 연결이라고 하자
+ * 여기서 서로 다른 네트워크라는 것은 물리적으로 네트워크가 분리되어있는 것
+ * => ***서로 다른 네트워크를 상호연결하기 위해 라우터 사용***
+
+## 예를들어 컴퓨터공학관 <-> NC 백화점 물리적으로 분리된 서로 다른 두 네트워크를 연결하는 방법
+ 1. physical layer를 서로 연결 => 단순히 선만 연결, 신호가 약해지면 Repeater 혹은 Amplifier 사용 (Layer 1 Switch)
+ 2. DataLink Layer 끼리 연결 => 하나의 Network Device를 넣고 서로 선으로 연결, 각각의 interface에서는 Physical, MAC, LLC 존재 (Layer 2 Switch, Bridge, Hub)
+ 3. 공통된 Network Layer를 만들어서 연결 => Router (Layer 3 Switch, 모든 device는 IP를 가짐)
+ 4. Transport Layer에서 연결 => Gateway (Layer 4 Swtich)
+ 5. Application Layer에서 연결 => Packet을 받아서 다른쪽 방향 network로 재전송 (Layer 5 Swtich, gateway)
+
+---
+## 각각의 Layer에서 전달되는 data unit이 불리는 이름
+![image](https://user-images.githubusercontent.com/68818952/133917394-b8b46006-df13-4e0d-93f4-1c4ee49e466b.png)
+
+* Application Layer : Message
+* Transport Layer : segment(TCP), datagram(UDP)
+* Network Layer : packet
+* Datalink Layer : Frame
