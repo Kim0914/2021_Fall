@@ -47,7 +47,10 @@
 
 ## Iterative Deepening Search
 * depth를 0부터 무한히 증가시킨다
+
+
 ![image](https://user-images.githubusercontent.com/68818952/133919636-f71e76dc-ff69-457d-956e-f461c090291f.png)
+
 * **F에서 O까지 가는 최소거리의 path를 구해보자**
 * Limit = 0 => cutoff
 * Limit = 1 => F ->[B, E, J, G] -> cutoff
