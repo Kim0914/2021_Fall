@@ -47,7 +47,7 @@
 
 ## Iterative Deepening Search
 * depth를 0부터 무한히 증가시킨다
-
+* DFS와 BFS를 적절하게 섞어서 사용하는 알고리즘
 
 ![image](https://user-images.githubusercontent.com/68818952/133919636-f71e76dc-ff69-457d-956e-f461c090291f.png)
 
