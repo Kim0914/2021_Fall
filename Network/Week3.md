@@ -52,3 +52,12 @@
 * 들어오는 네트워크와 나가는 네트워크의 사이즈가 다르면 framentation을 한다
 * 그러나 reassemble은 하지 않는다. -> Destination의 시스템에서 파편화된 패킷을 재조립한다
 * header length가 fixed이다 -> 정보를 빠르게 처리할 수 있기 때문에 H/W로 많이 쓰인다
+
+## IPv6 Header
+![image](https://user-images.githubusercontent.com/68818952/134775499-41414635-a1e6-458e-a957-7e454e84104e.png)
+* IPv4에서 TTL은 IPv6에서 Hop limit이다
+* DS: Differentiated Service (6 bits) => 차등화 서비스
+* ECN: Explicit Congestion Notification (2 bits) => 체증이 발생한 것
+* Flow level
+* IPv6는 16-bit identification이 없는데, IPv6에서는 상위 layer가 처리하도록 하고 관여하지 않는다
+* Next Header는 다음에 오는 통신모델이 어떤 모델인지에 대한 정보를 담고 있다. ex) TCP: 6
