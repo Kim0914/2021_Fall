@@ -63,27 +63,27 @@
   ![image](https://user-images.githubusercontent.com/68818952/134769599-5b417d7a-88f0-4c7f-972a-0863f6ec9579.png)
 
 * Graph search 기반
-* ![image](https://user-images.githubusercontent.com/68818952/134769733-8cafe80a-8ad0-4747-b19b-0eb79e3213ac.png)
+  ![image](https://user-images.githubusercontent.com/68818952/134769733-8cafe80a-8ad0-4747-b19b-0eb79e3213ac.png)
 
 * Theorem (Tree-Search case)
- * A* tree search는 h(n)이 goal에 도달하는 비용보다 크지 않을때만 optimal하다 (h(n) is admissible)
+  * A* tree search는 h(n)이 goal에 도달하는 비용보다 크지 않을때만 optimal하다 (h(n) is admissible)
 
 * Theorem (Graph-Search case)
- * The graph-search version of A* is Optimal if h(n) is consistent
- * A* graph search는 h(n)이 admissible 하다면 optimal을 보장하지 못한다
- * frontier가 optimal solution이 되는 node를 포함하지 않을 것이기 때문에
- * A* graph search의 optimal을 위해서는 **consistency**라는 더 강력한 조건이 필요하다
-  * ![image](https://user-images.githubusercontent.com/68818952/134770093-e624e158-a03a-48ca-94bc-ffefc57fb4df.png)
-  * 삼각형에서 두 변의 길이의 합은 가장 긴 변의 길이보다 크다는 공식과 일맥상통
+  * The graph-search version of A* is Optimal if h(n) is consistent
+  * A* graph search는 h(n)이 admissible 하다면 optimal을 보장하지 못한다
+  * frontier가 optimal solution이 되는 node를 포함하지 않을 것이기 때문에
+  * A* graph search의 optimal을 위해서는 **consistency**라는 더 강력한 조건이 필요하다
+    ![image](https://user-images.githubusercontent.com/68818952/134770093-e624e158-a03a-48ca-94bc-ffefc57fb4df.png)
+    * 삼각형에서 두 변의 길이의 합은 가장 긴 변의 길이보다 크다는 공식과 일맥상통
 
 * Evaluation
- * A* is **optimal and complete**
- * Time and meomory complexity
-  * Exponetial time complexity
-   * Perfect h -> no search (parctically impossible)
+  * A* is **optimal and complete**
+  * Time and meomory complexity
+    * Exponetial time complexity
+    * Perfect h -> no search (parctically impossible)
 
 
 * Recall that f(n) = g(n) + h(n)
- * h = 0 -> uniform cost search
- * g = 1, h = 0 -> breadth-first search
- * g = 0 -> greedy best-first search
+  * h = 0 -> uniform cost search
+  * g = 1, h = 0 -> breadth-first search
+  * g = 0 -> greedy best-first search
