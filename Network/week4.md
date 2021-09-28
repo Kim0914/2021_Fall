@@ -1,7 +1,7 @@
 ## IPV6에서 DN, ECN, Flow Level (09.23)
 ![image](https://user-images.githubusercontent.com/68818952/135042297-8361a9db-2eef-48a3-9f10-93f52ac8020b.png)
 
-* 데이터가 디바이스에 도착하고 운영체제가 데이터를 가져와서 포트번호를 보고 프로세스에게 나눠주면 어플리케이션에서 버퍼로 만듦
+* 데이터가 디바이스에 도착 -> OS가 데이터를 가져와서 포트번호를 보고 프로세스에게 나눠주면 어플리케이션에서 버퍼로 만듦
 * 운영체제가 바로바로 프로세스에 넘겨줄 수 없으니까 버퍼링한 다음에 넘겨줌. Send buffer, Receive buffer 유지
 * 각 레이어마다 버퍼를 구성하고 있고, 라우터도 포트에 들어오는 데이터를 처리하기 위해 각각의 버퍼를 구성(queue형식)
 * 패킷스위칭 기반의 네트워크는 거대한 queue들의 기반으로 이루어져있다고 생각하면 된다
@@ -27,6 +27,9 @@
 
 * 최신 IPv4버젼은 이러한 control들을 신경쓰지 않는다 -> unreliable 하다
 * IPv6도 unreliable 하지만, 최대한 reliable하게 보내도록 한다
+* IPv4와 IPv6는 **비연결성(Connection less)**이다
+  * 패킷이 라우터를 통해 전달되는 방향이 계속 달라진다 -> ***패킷은 어디로 가야할지에 대한 정보를 포함해야 함***
+  * **Source IP, Destination IP가 IP Header에 그래서 들어있는 것**
 * 따라서 IPv6에서는 **ECN field**를 통해 congestion등이 있는지 명확하게 표현한다 (2 비트)
 * Dest에서 Src로 ACK와 함께 ***"Congestion happen"*** 이런식으로 보낸다
 
@@ -35,4 +38,18 @@
 
 * **Flow Label은 라우터가 도착한 패킷이 어디로 향할지 결졍하기 위해서는 Dest IP를 본다**
   * Desp IP를 확인하는데 시간이 걸리기 때문에, 어떤 목적지로 가는 패킷에 대해서는 각 라우터 끼리 미리 set up 한다
-  * 어디로 향하는지에 따라 flow label을 작성하고, 이 flow label을 확인하여 바로바로 보낸다 
+  * 어디로 향하는지에 따라 flow label을 작성하고, 이 flow label을 확인하여 바로바로 라우팅(보낸다) 
+  * 예를들어, LG U+의 넷플릭스 서버에 접근하는 경우, 각 호스트가 보내는 패킷에다가 flow label 명시
+  * 0011이라는 flow label을 라우터에 셋업해놓으면 바로바로 넷플릭스 서버로 도착함 (속도 개선)
+
+* Transport Layer(TCP)
+  * Reliable delivery of data
+    * Required: error, flow control
+    * Optional: congestion control
+  * Ordering of delivery
+  ![image](https://user-images.githubusercontent.com/68818952/135081963-57600fe9-664f-4e5f-b47a-4eb4e2ead84d.png)
+  * TCP checksum은 Header와 Data 둘다 검사한다 -> Reliable하기 위해
+
+* Applicaition Layer
+  * Support for user application
+    * e.g. http, SMTP(메일 전송시 사용하는 프로토콜)
