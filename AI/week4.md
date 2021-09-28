@@ -57,3 +57,27 @@
 * GA의 장점은 crossover에서 발생한다. crossover 지점도 random하게 잡아야한다
 ![image](https://user-images.githubusercontent.com/68818952/134772787-17ce0203-c928-421e-ab0e-5ace7489ac1b.png)
 ![image](https://user-images.githubusercontent.com/68818952/134772870-7b148da8-f298-49ac-8048-d2ecce532153.png)
+
+## Continuous State Spaces(09.28)
+* Object function이 함수로 주어졌을 때 연속함수 f가 미분가능 하면 gradiant를 계산할 수 있고, 방향을 따라 이동하면 max, min 방향으로 이동 가능
+* gradiant를 구하는 방법
+  * 1차 함수이면 미분해서 구하면 되고, 2차 이상의 n차 일때, n개의 편미분을 구해 벡터를 구성하면 된다 -> **벡터의 방향에 집중**
+  * gradiant만 구해서 그 방향으로 나아가면 된다
+  * **a(알파)는 step size**. a가 너무 작으면 단계가 매우 많아지고, a가 너무 크면 원하는 목표지점을 지나칠 수 있다
+  * gradiant f 가 0인 경우 -> 변곡점이 되는 경우이므로 **critical points**가 될 수 있다.
+
+* **Line Search(for min)** : 최적의 a 사이즈를 찾아가는 방법
+  * minimize를 한다고 했을 때, x - a * gradinant f 를 계산할 때 a를 여러개를 두어 f값을 가장 작게하는 a 선택
+  * 새로운 방향이 선택되어 진다
+
+* gradiant f 가 0인 경우를 바로 찾을 수 있는 경우에는 그 지점으로 바로 가서 max,min 값을 계산하면 된다
+  -> 대부분 이런 경우는 존재하기 힘들다.
+  
+## Constrained Optimization Problem
+* Constrained Optimization Problem는 제약조건이 주어진다.
+* min f(x)가 있고, x가 n차 벡터라고 하자
+  * **gi(x) = 0, i = 1,....,q**
+  * **hj(x) <= 0, j = q+1,...,k**
+  * **L1 <= xl <=Ul, l = 1,...n**
+
+* Ll과 Ul은 S search space가 정의하는 xl의 상한선 하한선이다.
