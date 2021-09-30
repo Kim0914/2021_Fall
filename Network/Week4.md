@@ -53,3 +53,25 @@
 * Applicaition Layer
   * Support for user application
     * e.g. http, SMTP(메일 전송시 사용하는 프로토콜)
+
+* ***Network Layer가 Unreliable***하기 때문에 **Packet loss**, **Ordering of Packet**, **Packet duplication** 문제가 발생한다
+* 각 라우터마다 버퍼를 유지하고 있고, 버퍼를 저장했다가 처리하기 때문에 이런 문제가 발생할 수 있다
+* 라우터는 도착한 패킷의 목적지 주소를 기반으로 다음 목적지(라우터)를 결정한다
+
+---
+
+* **Ordering of Packet**
+  * 패킷1과 패킷2가 각각 다른 라우터로 보내졌다고 하자. 패킷1이 있는 라우터가 busy해서 패킷2가 먼저 도착
+  * 따라서 목적지에는 패킷1 -> 패킷2의 순서가 아닌, 패킷2 -> 패킷1의 순서로 도착하는 경우가 생긴다
+
+* **Packet duplication**
+  * Sender측에서 패킷1을 보내고 ACK를 기다리고 있는데, 패킷1이 도착한 라우터가 busy해서 ACK를 시간 내에 받지 못함
+  * Sender는 패킷1을 재전송하게되면 라우터1의 queue에 패킷1이 2개가 존재하게 된다
+  * 라우터1의 상태가 정상적이게 되고 데이터를 처리하게 되면 중복 
+
+## The Definition of Hop
+* One hop coverage는 무엇인가?
+  * ***하나의 데이터를 보냈을 때 이 데이터를 받아볼 수 있는 범위를 One hop이라고 할 수 있다***
+  * 그러나 다른 라우터는 이 데이터를 절대 받지 않는다. (라우터 <-> 라우터 개념이라고 볼 수 있다)
+  * Local Area Network의 가장 큰 특성은 Broadcasting이다 -> broadcast based '***one hop-range'***
+  * LAN안에서 각각의 노드들은 다른 노드의 패킷(데이터)를 들을 수 있다
