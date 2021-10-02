@@ -7,7 +7,7 @@
 * Logical Representation : how to conceptually understand and describe information -> Database issue
 * Physical Representation : something of implementation part, how to phsically organize data in file systems -> DBMS issue(phase 2)
 * 로지컬과 애플리케이션의 관계는 로지컬을 기반으로 애플리케이션을 개발하는 것
-* 애플리케이션은 로지컬을 기반으로 하는  추가적인 층이다
+* 애플리케이션은 로지컬을 기반으로 하는 추가적인 층이다
 
 
 ## Three Level Schema of Databases
