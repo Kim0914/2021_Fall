@@ -48,14 +48,14 @@
   * 패킷을 잃어버릴 수도 있고, 패킷이 손상될 수도 있고
 
 * **TCP Connection**
- * TCP 연결은 반드시 1:1연결이다. 1:N으로 연결할 수 없다
- * 순서대로 진행하고, Reliable하다
- * **Byte 단위의 통신을 한다**
- ![image](https://user-images.githubusercontent.com/68818952/135824348-fbbc61ae-dd5f-45b6-8dc0-90e6e350164d.png)
- * 예를들어 "I am happy"라는 메세지를 보내는 경우
- * Seq가 92부터 시작하므로 I: 92, a: 93, ..., y: 99 이다
- * Host A는 Seq=92와 ACK를 요청하고, Host B는 크기 8바이트를 계산한 후 ACK=100을 보내달라고 응답한다.
- * 하나의 Line으로 양방향 통신을 할 수 있다(Full-Duplex)
- * Half-Duplex는 보내는 방향을 설정해야함(단방향)
+  * TCP 연결은 반드시 1:1연결이다. 1:N으로 연결할 수 없다
+  * 순서대로 진행하고, Reliable하다
+  * **Byte 단위의 통신을 한다**
+  ![image](https://user-images.githubusercontent.com/68818952/135824348-fbbc61ae-dd5f-45b6-8dc0-90e6e350164d.png)
+  * 예를들어 "I am happy"라는 메세지를 보내는 경우
+  * Seq가 92부터 시작하므로 I: 92, a: 93, ..., y: 99 이다
+  * Host A는 Seq=92와 ACK를 요청하고, Host B는 크기 8바이트를 계산한 후 ACK=100을 보내달라고 응답한다.
+  * 하나의 Line으로 양방향 통신을 할 수 있다(Full-Duplex)
+  * Half-Duplex는 보내는 방향을 설정해야함(단방향)
 
 
