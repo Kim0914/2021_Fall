@@ -14,8 +14,11 @@
 ![image](https://user-images.githubusercontent.com/68818952/132472179-0d3f2987-a85e-4837-b061-d11327124530.png)
 
 * Applications : **External level** (schema)
+  * 생성된 데이터 set 중에서, 적절한 상황에 맞는 적절한 데이터만을 추출한다
 * Logical Representation : **Conceptual level** (schema)
+  * 데이터를 어떻게 구현할지는 전혀 생각하지 않고, 오직 논리적인 Data Modeling에만 집중한다
 * Physical Representation : **Physical level** (schema)
+  * 데이터가 저장되고 사용되는 시스템적인 구조이다(DBMS)
 * ***Logical Representation Layer는 Physical Representation에 Independent하다***
 
 ### DB관련된 job 인터뷰에서 가장 자주 나오는 질문이 위의 2개의 관한 내용이다
