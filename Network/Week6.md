@@ -34,3 +34,22 @@
   Answer: **2. Destination**
   
   
+## Layering: A Modular Approach
+* Each Layers don't care about other layers (Independent)
+* 상위 하위 모듈에 대한 API를 정의해야하고, 모듈 자체에 정의해야한다
+* 기본적으로 Peer to Peer. 패킷은 수직적인 흐름, 프로토콜은 수평적인 흐름
+* 프로토콜은 1. service interface 2. Peer-to-Peer interface 두가지 요소를 가진다
+
+## Multiplexing and Demultiplexing
+* 패킷이 IP 프로토콜(네트워크 층)에 도착하면 상위 레이어인 전송층 TCP, UDP, RTP 중 어디로 갈지 결정해야함
+* IP 헤더에 그 정보가 담겨있다(Protocol Field) **Demultiplexing Key 라고도 한다**
+* 프로토콜 필드는 Sender가 작성하고, Receiver가 사용한다
+* IP Protocol의 모양이 모래시계와 비슷한데, 네트워크 레이어 상하부에 많은 것들이 정의되고 사용되기 때문
+* 상하부 네트워크를 연결하는 역할이 네트워크 층이 하는 것이다
+* IP Protocol은 Best Effot이면서 Unreliable하다
+
+## 프로토콜에 대한 Standard를 정의하는 기구
+1. IEEE: DataLink, Physical Layer (Institute of Electrical and Electronics Engineers)
+ * Wireless, Ethernet, Bluetooth (e.g IEEE 802)
+2. IETF: Network, Transport, Application (Internet Engineering Task Force)
+ * TCP(RFC 793), IP (e.g RFC # - 표준문서)
