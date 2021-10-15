@@ -69,3 +69,16 @@
 4. 자신의 IP 주소와 비교
 5. 본인의 주소와 일치하지 않으면 ARP request 패킷을 버리고
 6. 본인의 주소와 일치하면 ARP Reply 패킷을 보낸다
+
+## ARP통신을 하는 케이스
+1. Src와 Dest가 같은 네트워크에 있는 경우: 일반적인 ARP 프로토콜을 하면 된다
+2. Src와 Dest가 다른 네트워크에 있는 경우: Src와 해당 네트워크의 Default 라우터와 ARP 통신을 한다
+3. Src의 네트워크 라우터와 Dest의 네트워크 라우터와: 서로 다른 네트워크에 패킷을 전달하기 위해서 라우터끼리 ARP 프로토콜
+4. Dest의 네트워크 라우터와 Dest: Dest의 네트워크 라우터와 Dest 간의 ARP 통신을 해서 Dest의 MAC 주소를 알아내서 Reply한다
+
+## 라우터와 ARP Table
+* Broadcast-enable Network에서 같은 **_네트워크에 있는 사용자(PC)가 전원을 키면 자동으로 해당 네트워크의 라우터와 ARP request/reply_**
+* Default 라우터는 자동으로 사용자(PC)의 IP 주소와 MAC 주소를 ARP Table에 담고 있다
+* 사용자(PC)도 현재 네트워크상에 있는 ARP Table 정보를 각각 가지고 있다.
+* 만약 한 사용자(PC)가 IP 주소가 바뀌면, 그 사용자가 본인의 IP와 MAC을 <IP, MAC>으로 broadcasting(ARP Reply)한다
+* Broadcasting으로 보내기 때문에 Dest Mac은 111111111111로 담아서 Reply를 보낸다
