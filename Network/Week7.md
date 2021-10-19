@@ -6,11 +6,11 @@
   * 우리가 기본적으로 통신할 때 상대방의 IP 주소는 알고있다고 합리적으로 가정한다
     * Why? 우리가 택배를 보낼 때 기본적으로 상대방의 주소는 알고있다고 생각하잖아
     * 나머지 중간중간에 들리는 영업소는 택배 시스템에서 알아서 해줌
-  * 
+  
 * ARP는 multi-access channel을 필요로 한다. 즉 Broadcasting이다
 * ARP 프로토콜을 간단히 설명하면
   * Sender가 Dest의 IP 주소를 가지고 있는 패킷을 ***broadcast*** 한다
-  * 그 주소를 가진 machine은 MAC(HW) address를 포함하는 ***reply(unicast)***를 보낸다
+  * 그 주소를 가진 machine은 MAC(HW) address를 포함하는 ***reply(unicast)*** 를 보낸다
   * MAC(HW) 주소는 오리지널 패킷을 보내기 위해 사용된다
 ---
 ## Broadcast-enable Network
