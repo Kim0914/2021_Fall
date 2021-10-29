@@ -21,3 +21,18 @@
   * "Who has my IP 10" -> **응답이 없으면 유일한 IP, 응답이 있으면 누군가가 쓰고 있는 것**
   * Broadcasting 방식으로 보내고 본인이 보내는 요청이기 때문에 본인의 IP 정보를 헤더에 담는다 Target IP도 내 주소
   * 응답이 오게되면 IP를 바꾸라고 OS가 메시지를 보낸다
+* 어떤 시스템이 IP가 10이었는데 2로 바꿨다
+  * 기존 host들은 이 사실을 모르고 <<10 A>>라고 가지고 있따
+  * IP를 바꾼 host는 네트워크에 있는 모든 host에게 브로드캐스팅해야함
+  * **Dest MAC 11111111, Src MAC A, Sender IP 2, Sender MAC A, Target MAC 11111111, Target IP 2, Operation field 2**
+  * 각 호스트가 Src IP, MAC의 정보를 보고 자신의 ARP Table의 값을 최신화 한다
+
+
+## RARP
+* 기본적으로 터미널에는 storage device가 없다
+* IP를 저장할 수 있는 공간이 없다는 것이다 -> **MAC 주소는 이더넷 칩셋에 저장되어 있음**
+* 따라서 IP 주소를 얻기 위해서 MAC주소를 이용한다. 맥 주소를 서버에 전송하면 미리 할당된 IP 주소를 반환해준다
+* 이런 역할을 하는 것이 RARP 프로토콜이다.
+* **주어진 MAC에 대해 IP를 미리 할당하여 유지하고 있는 것이 RARP 서버이다** -> Kernel Programming
+* RARP 통신을 하기 위한 유일한 방법은 Broadcasting이다.
+* RARP 커널 프로그래밍이 구현하기 어렵기 때문에 **BOOTP**로 대체하기 시작했다
