@@ -28,3 +28,60 @@
   * DHCP Offer
   * DHCP Request
   * DHCP ACK
+
+## Measurement
+* Network performance Metrics: **Bandwidth, Latency**
+1. Bandwidth: **Data Transmitted per time unit **
+2. Throughput: **The number of completed Jobs(Task, bytes, packets, bits) / Observed Time** 
+3. Utilization: 
+4. Latency(Delay): Queueing Time + Transmission Time + Propagation Time
+
+* Bandwidth와 Throughput이 같다고 할 수 있을까?
+  * 아님. Why? **밴드위스는 단지 시간당 데이터 전송률을 나타낸다. 이 데이터는 성공하든 실패하든 상관없음.**
+  * **Throughput은 전송에 성공한 데이터**만 다룬다
+
+* Utilization이 Throughput과 같다고 할 수 있을까?
+  * 아님. Why? measurement unit이 다름. Utilization은 time/time (no measurement unit, Only scalar value) Throughput은 bit,packet/sec
+  * Utilizationdptj Busy time이 number of completed job을 의미하지 않음.
+
+
+## NAT(Network Address Translation)
+* IOT는 컴퓨터 네트워크에서 매우 유명한 것이다. 각각의 사물들은 IP 주소를 가지고 있다.
+* IPv4는 32bits이고 가능한 IP의 수는 2^32개 이므로 IP를 할당하기에 충분하지 않다.
+* 그 대안으로 IPv6를 사용하자는 방법이 나왔지만 trnasition이 매우 느리다
+* 그래서 NAT가 등장했다.
+
+## NAT Box and Private IP Address
+* IPv4에는 Broadcast, Multicast, Unicast 방식이 있다
+  * 브로드캐스트는 시스템의 모든 구성원에게 알리는 방식
+  * 멀티캐스트는 시스템의 특정 구성원에게 알리는 방식
+  * 유니캐스트는 시스템의 특정 한 사람에게 알리는 방식
+* Public IP vs Private IP
+  * Public IP는 open to world, unique하다. 
+  * Private IP는 not open to world. 정해진 구역 내에서만 사용가능하다. 시스템 밖에서는 접근할 수 없다(패킷 전송 X)
+    * 10.0.0.0 ~ 10.255.255.255 는 주로 회사나 대학교에서 사용되는 Private IP이다
+    * 192.168.0.0 ~ 192.168.255.255 는 가정이나 작은 사무실에서 사용되는 Private IP이다 
+![image](https://user-images.githubusercontent.com/68818952/139827071-8911a6d8-edb7-4239-886e-53389a828f8a.png)
+* 서로 다른 사설망에서 192.168.0.2라는 주소를 가질 수 있다.
+* 한 시스템이 192.168.0.2에게 패킷을 보내려고 하면 라우터는 어떤 192.168.0.2로 보내야 하는지 모른다
+* 따라서 **라우터는 Private IP를 버린다 => 이것이 문제다** 
+
+---
+![image](https://user-images.githubusercontent.com/68818952/139829341-bad0488d-a96e-4033-a1c1-daa2ea6c43be.png)
+* 톰의 집에서 192.168.0.2 라는 시스템이, 네이버 웹서버 51.36.12.34로 패킷을 보내고 싶을 때
+* SRC에는 192.168.0.2, Dest에는 51.36.12.34로 담아서 패킷을 보내게 된다.
+* 이후 **톰의 집 AP를 지나 라우터의 다른 이더넷 칩셋을 Public IP로 통과하게 되면**
+* **SRC에는 164.125.37.88(Public IP)**, **Dest에는 51.36.12.34**로 담겨서 전송된다.
+* 네이버 웹서버에서 패킷을 받고, 다시 톰에게 보내야 된다.
+* 이때 **SRC에는 51.36.12.34, Dest에는 164.125.37.88(192.168.0.2이 아님)을 담아서 보낸다**.
+  * 왜냐하면 네이버 웹서버와 연결된 라우터에서 Dest에 Private IP가 담긴 것을 보고 패킷을 drop하기 때문에.
+* 이 **패킷이 톰의 AP에 도달하게 되면 NAT를 이용해 SRC에 51.36.12.34 Dest에 192.168.0.2**로 패킷을 담아 보낸다
+
+## Question
+![image](https://user-images.githubusercontent.com/68818952/139830630-d2fbb1b0-5918-435f-b8a4-45bf946e303d.png)
+* 만약 위와 같은 상황에서, 192.168.0.2 와 192.168.0.3이 똑같이 네이버 웹서버로 패킷을 보낸다고 하면
+* 톰의 집 AP를 통과한 이후에는 같은 형태의 패킷이 될 것이다.
+* SRC: 164.125.37.88 Dest:51.36.12.34
+* 그럼 이 두 패킷을 어떻게 구분해야 할까?
+* 따라서 Private IP만으로는 부족하고 또 다른 정보가 필요하다 !!
+
