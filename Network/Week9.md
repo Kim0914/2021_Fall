@@ -44,6 +44,26 @@
   * 아님. Why? measurement unit이 다름. Utilization은 time/time (no measurement unit, Only scalar value) Throughput은 bit,packet/sec
   * Utilizationdptj Busy time이 number of completed job을 의미하지 않음.
 
+## Bandwidth
+* Bandwidth 
+  * Frequency band
+    * voice 300 ~ 3300 -> bandwidth = 3000Hz, Signal의 관점에서 주파수 범위를 의미한다
+  * Communitcation Link
+    * [# of bit/sec] can be transmitted on the link, Data Rate를 의미한다
+  * Throughput
+    * # of complted jobs(task, bits) 
+
+## Latency
+* 노드 A, B가 있다고 할 때, A에서 B로 메세지를 보내는데 걸리는 시간
+* Propagation + Transmit + Queue
+  * Propagation Time: 매질에 따라 전송되는데 걸리는 시간 
+  * Transmission Time = Data size / Bandwidth
+
+## Question
+* 노드 A, B가 있다고 할 때, A에서 B로 메세지를 보낼 때 **Bandwidth와 Latency 둘 중 어느것이 우선적으로 고려될까?**
+  * **정답은, 상황에 따라 다르다 !!** 
+  * 만약 데이터 크기가 매우 작으면, Bandwidth를 신경쓸 필요가 없다
+
 
 ## NAT(Network Address Translation)
 * IOT는 컴퓨터 네트워크에서 매우 유명한 것이다. 각각의 사물들은 IP 주소를 가지고 있다.
@@ -85,4 +105,6 @@
 * SRC: 164.125.37.88 Dest:51.36.12.34
 * 그럼 이 두 패킷을 어떻게 구분해야 할까?
 * 따라서 Private IP만으로는 부족하고 또 다른 정보가 필요하다 !!
+
+
 
