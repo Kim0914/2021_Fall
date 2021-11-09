@@ -47,7 +47,7 @@
 ## Bandwidth
 * Bandwidth 
   * Frequency band
-    * voice 300 ~ 3300 -> bandwidth = 3000Hz, Signal의 관점에서 주파수 범위를 의미한다
+    * voice 300 ~ 3300 -> bandwidth = 3000Hz, Signal의 관점에서 주파수 범위를 의미한다 **(대역폭)** 
   * Communitcation Link
     * [# of bit/sec] can be transmitted on the link, Data Rate를 의미한다
   * Throughput
@@ -63,6 +63,11 @@
 * 노드 A, B가 있다고 할 때, A에서 B로 메세지를 보낼 때 **Bandwidth와 Latency 둘 중 어느것이 우선적으로 고려될까?**
   * **정답은, 상황에 따라 다르다 !!** 
   * 만약 데이터 크기가 매우 작으면, Bandwidth를 신경쓸 필요가 없다
+  ![image](https://user-images.githubusercontent.com/68818952/140921114-2f8d26a6-cb2b-46c4-94c9-394f01f5bd8f.png)
+  * A도로는 거리는 짧은데 Bandwidth는 작은 도로
+  * B도로는 거리는 길지만 Bandwidth는 큰 도로
+  * 만약 보낼 package의 많은 경우는 B도로가 나을지도 모른다
+  * **즉, 보내는 상황과 경우에 따라 선택해야할 도로가 다르다 !!** 
 
 
 ## NAT(Network Address Translation)
